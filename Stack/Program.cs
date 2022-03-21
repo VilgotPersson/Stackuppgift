@@ -8,16 +8,31 @@ namespace Stack
         static void Main(string[] args)
         {
             Stack<char> stack = new Stack<char>();
-            string str = "(){[}[]";
-
+            string str = "()()()()()()";
             int i = 0;
+            int l = 0;
+            int x = 0;
 
             foreach (char k in str)
                 stack.Push(k);
-
+            
             while(stack.Count > 0)
             {
                 char k = stack.Pop();
+                if(stack.Count == 0){
+                if(k == ')'){
+                    x= 5000;
+                }
+
+                else if(k == ']'){
+                    x= 5000;
+                }
+
+                else if(k == '}'){
+                    x= 5000;
+                }
+
+            }
                 if (k == '(')
                 {
                     i++;
@@ -28,22 +43,22 @@ namespace Stack
                 }
                 else if (k == '{')
                 {
-                    i++;
+                    l++;
                 }
                 else if (k == '}')
                 {
-                    i--;
+                    l--;
                 }
                 else if (k == '[')
                 {
-                    i++;
+                    x++;
                 }
                 else if (k == ']')
                 {
-                    i--;
+                    x--;
                 }
             }
-            if (i == 0)
+            if (i == 0 && x==0 && l==0)
             {
                 Console.WriteLine("Balanserad");
             }
@@ -51,6 +66,7 @@ namespace Stack
             {
                 Console.WriteLine("Inte balanserad");
             }
+            
         }
     }
 }
